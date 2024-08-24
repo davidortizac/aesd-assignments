@@ -14,9 +14,15 @@
 */
 void test_validate_my_username()
 {
-    /**
-     * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
-     * config file and my_username() functions are setup properly
-     */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+    // Paso 1: Obtener el nombre de usuario codificado
+    const char *hardcoded_username = my_username();
+
+    // Paso 2: Obtener el nombre de usuario desde el archivo de configuración
+    char *conf_file_username = malloc_username_from_conf_file();
+
+    // Paso 3: Comparar ambos nombres de usuario
+    TEST_ASSERT_EQUAL_STRING_MESSAGE(hardcoded_username, conf_file_username, "Los nombres de usuario no coinciden!");
+
+    // Liberar la memoria asignada
+    free(conf_file_username);
 }
